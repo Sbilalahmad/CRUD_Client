@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CRUDClient" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/ro_green</item>
+         <item name="colorPrimaryVariant">@color/ro_green</item>
+         <item name="statusBarBackground">@color/ro_green</item>
+         <item name="statusBarForeground">@color/white</item>
+    </style>
+
+    <style name="Theme.CRUDClient" parent="Base.Theme.CRUDClient">
+        <item name="colorPrimary">@color/ro_green</item>
+        <item name="colorPrimaryVariant">@color/ro_green</item>
+        <item name="statusBarBackground">@color/ro_green</item>
+    </style>
+</resources>
