@@ -1,8 +1,8 @@
 package com.syed.crudadmin
 
 data class VehicleData(
-    val ownerNamme: String,
-    val vehicleBrand: String,
-    val vehicleRto: String,
-    val vehicleNumber: String
+    val ownerName: String?=null,
+    val vehicleBrand: String?=null,
+    val vehicleRTO: String?=null,
+    val vehicleNumber: String?=null
 )

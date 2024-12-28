@@ -15,7 +15,8 @@ class UploadActivity2 : AppCompatActivity() {
 
     private  lateinit var binding: ActivityUpload2Binding
     private lateinit var databaseReference: DatabaseReference
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    override fun onCreate(savedInstanceState: Bundle? ) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
@@ -27,12 +28,12 @@ class UploadActivity2 : AppCompatActivity() {
             insets
         }
         binding.save.setOnClickListener{
-            val ownerNamme = binding.uplName.text.toString()
+            val ownerName = binding.uplName.text.toString()
             val vehicleBrand =binding.uplBrand.text.toString()
-            val vehicleRto =binding.uplRto.text.toString()
+            val vehicleRTO =binding.uplRto.text.toString()
             val vehicleNumber =binding.uplVno.text.toString()
 
-            if (ownerNamme.isEmpty()) {
+            if (ownerName.isEmpty()) {
                 Toast.makeText(this, "Owner Name cannot be empty", Toast.LENGTH_SHORT).show()
                 binding.uplName.requestFocus()
                 return@setOnClickListener
@@ -44,7 +45,7 @@ class UploadActivity2 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (vehicleRto.isEmpty()) {
+            if (vehicleRTO.isEmpty()) {
                 Toast.makeText(this, "Vehicle RTO cannot be empty", Toast.LENGTH_SHORT).show()
                 binding.uplRto.requestFocus()
                 return@setOnClickListener
@@ -57,7 +58,7 @@ class UploadActivity2 : AppCompatActivity() {
             }
 
             databaseReference= FirebaseDatabase.getInstance().getReference("Vehicle Information")
-            val vehicleData= VehicleData(ownerNamme,vehicleBrand,vehicleRto,vehicleNumber)
+            val vehicleData= VehicleData(ownerName,vehicleBrand,vehicleRTO,vehicleNumber)
 
             databaseReference.child(vehicleNumber).setValue(vehicleData).addOnSuccessListener{
                 binding.uplName.text.clear()
