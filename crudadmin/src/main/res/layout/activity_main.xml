@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/car_green1"
+    android:background="@color/ro_green"
     tools:context=".MainActivity" >
 
     <ImageView
@@ -24,12 +24,34 @@
         android:id="@+id/upl_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
         android:text="UPLOAD"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.548"
         tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/upd_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="UPDATE"
+        app:layout_constraintEnd_toEndOf="@+id/upl_btn"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="@+id/upl_btn"
+        app:layout_constraintTop_toBottomOf="@+id/upl_btn"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:rotation="90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/car_green2"
+        tools:layout_editor_absoluteY="17dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
