@@ -30,5 +30,9 @@ class MainActivity : AppCompatActivity() {
             val intent= Intent(this, UpdateActivity::class.java)
             startActivity(intent)
         }
+        binding.dltBtn.setOnClickListener{
+            val intent = Intent(this, DeleteActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
