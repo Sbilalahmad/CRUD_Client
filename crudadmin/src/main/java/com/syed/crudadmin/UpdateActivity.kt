@@ -35,20 +35,37 @@ class UpdateActivity : AppCompatActivity() {
 
         }
     }
-    private fun updataData(vechicleNumber: String,ownerName: String,vehicleBrand: String,vehicleRTO: String){
-        databaseReference= FirebaseDatabase.getInstance().getReference("Vehicle Information")
-        val vehicleData = mapOf<String, String> ("ownerName" to ownerName,"vehicleBrand" to vehicleBrand,"vehicleRTO" to vehicleRTO)
+    private fun updataData(vechicleNumber: String, ownerName: String, vehicleBrand: String, vehicleRTO: String) {
+        databaseReference = FirebaseDatabase.getInstance().getReference("Vehicle Information")
 
-        databaseReference.child(vechicleNumber).updateChildren(vehicleData).addOnSuccessListener{
-            binding.updVno.text.clear()
-            binding.updName.text.clear()
-            binding.updBrand.text.clear()
-            binding.updRto.text.clear()
-            Toast.makeText(this,"Update Successful", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener{
+        // Check if the vehicle data already exists
+        databaseReference.child(vechicleNumber).get().addOnSuccessListener { snapshot ->
+            if (snapshot.exists()) {
+                // If the vehicle data exists, update it
+                val vehicleData = mapOf<String, String>(
+                    "ownerName" to ownerName,
+                    "vehicleBrand" to vehicleBrand,
+                    "vehicleRTO" to vehicleRTO
+                )
 
-            Toast.makeText(this,"Update Failed", Toast.LENGTH_SHORT).show()
+                databaseReference.child(vechicleNumber).updateChildren(vehicleData).addOnSuccessListener {
+                    binding.updVno.text.clear()
+                    binding.updName.text.clear()
+                    binding.updBrand.text.clear()
+                    binding.updRto.text.clear()
+                    Toast.makeText(this, "Update Successful", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Update Failed", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                // If the vehicle data does not exist, notify the user
+                Toast.makeText(this, "Vehicle data does not exist", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener {
+            // Handle any errors during the read operation
+            Toast.makeText(this, "Error checking data", Toast.LENGTH_SHORT).show()
         }
     }
+
 
 }
